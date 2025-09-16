@@ -31,3 +31,35 @@ The program should also employ a while loop that keeps track of the number of gu
 
  
 */
+#include <iostream>
+#include <cstdlib>
+#include <ctime>  // for time()
+using namespace std;
+
+int main() {
+    srand(time(0));  // seed random number generator once
+
+    int guessInt = rand() % 100 + 1;  // gets a random number 1–100 to compare to user guess
+    int userGuess;
+    int guessCount = 0;
+
+    cout << "Guess a number between 1 and 100: ";
+    cin >> userGuess;
+    guessCount++;
+
+    while (userGuess != guessInt) {
+        if (userGuess > guessInt) {
+            cout << "Too high! Try again: ";
+        } else {
+            cout << "Too low! Try again: ";
+        }
+
+        cin >> userGuess;   // asks for a new guess again each loop
+        guessCount++;
+    }
+
+    cout << userGuess << " is correct! It took you " 
+         << guessCount << " guesses!" << endl;
+
+    return 0;
+}
